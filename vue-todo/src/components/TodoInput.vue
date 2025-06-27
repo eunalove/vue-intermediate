@@ -15,6 +15,7 @@ export default {
             newTodoItem: ""
         }
     },
+
     methods:{
       addTodo: function(){
         //저장하는 로직
