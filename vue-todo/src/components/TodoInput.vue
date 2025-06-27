@@ -1,15 +1,34 @@
 <template>
-  <div>
-    input
+  <div class="inputBox shadow">
+    <input type="text" v-model="newTodoItem" @keyup.enter= "addTodo">
+    <span class="addContainer" v-on:click="addTodo">
+      <i class="fas fa-plus addBtn"></i>
+    </span>
+    <button v-on:click="addTodo">add</button>
   </div>
 </template>
 
 <script>
 export default {
+    data: function(){
+        return{
+            newTodoItem: ""
+        }
+    },
+    methods:{
+      addTodo: function(){
+        //저장하는 로직
+        localStorage.setItem(this.newTodoItem, this.newTodoItem);
+        this.clearInput();
+      },
 
+      clearInput: function(){
+        this.newTodoItem = '';
+      }
+    }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
