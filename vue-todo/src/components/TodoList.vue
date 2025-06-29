@@ -16,11 +16,7 @@
 
 <script>
 export default {
-  data: function(){
-    return{
-      todoItems: []
-    }
-  },
+  props: ['propsdata'],
 
   methods:{
     removeTodo: function(todoItem, index){
@@ -37,14 +33,6 @@ export default {
     }
     
   },
-    created: function() {
-      if (localStorage.length > 0) {
-        for (var i = 0; i < localStorage.length; i++) {
-          this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-          //this.todoItems.push(localStorage.key(i));
-        }
-      }
-    }
 
 }
 </script>
