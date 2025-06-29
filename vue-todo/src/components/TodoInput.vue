@@ -4,7 +4,6 @@
     <span class="addContainer" v-on:click="addTodo">
       <i class="fas fa-plus addBtn"></i>
     </span>
-    <button v-on:click="addTodo">add</button>
   </div>
 </template>
 
@@ -21,7 +20,7 @@ export default {
         //저장하는 로직
 
         if(this.newTodoItem !== ''){
-          this.$emit('addTodoItem', this,this.newTodoItem);
+          this.$emit('addTodoItem',this.newTodoItem);
           this.clearInput();
         }
         
