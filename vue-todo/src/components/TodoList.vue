@@ -1,9 +1,9 @@
 <template>
   <div>
     <ul>
-      <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem.item">
+      <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item">
         <i class="fas fa-check" v-bind:class="{checkBtnCompleted: todoItem.completed}"
-        v-on:click="toggleComplete(todoItem)"></i>
+        v-on:click="toggleComplete(todoItem, index)"></i>
         
         <span v-bind:class= "{textCompleted: todoItem.completed}">{{ todoItem.item }}</span> 
         <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
@@ -24,12 +24,10 @@ export default {
       this.$emit('removeTodoItem', todoItem, index);
     },
 
-    toggleComplete: function(todoItem){
-      todoItem.completed =! todoItem.completed;
-      //로컬 스토리지의 데이터 갱신
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    toggleComplete: function(todoItem, index){
+      this.$emit('toggleItem', todoItem, index);
     }
+
     
   },
 
