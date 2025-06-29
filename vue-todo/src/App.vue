@@ -4,7 +4,7 @@
     <TodoInput v-on:addTodoItem= "addOneItem"></TodoInput>
     <TodoList v-bind:propsdata= "todoItems" v-on:removeTodoItem= "removeOneItem"
     v-on:toggleItem="toggleOneItem"></TodoList>
-    <TodoFooter></TodoFooter>
+    <TodoFooter v-on:clearAll="clearAllItemes"></TodoFooter>
   </div>
 </template>
 
@@ -43,7 +43,14 @@ export default {
       //로컬 스토리지의 데이터 갱신
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    } 
+    },
+
+    clearAllItemes: function() {
+      // 로컬 스토리지의 모든 아이템 제거
+      localStorage.clear();
+      // todoItems 배열 비우기
+      this.todoItems = [];
+    }
   },
   
 
